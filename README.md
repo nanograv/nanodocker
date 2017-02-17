@@ -13,10 +13,12 @@ Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stoc
 * `docker pull micvallis/nanograv-stochastic:v2`
 * `docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v1 run_jupyter.sh`
 * Then you can open a web browser at the address that appears on the screen, and gain access to a Jupyter notebook that can run the `libstempo`, `PAL2`, and `NX01` demos.
+* If you're using the older Docker Toolbox for Mac (and perhaps some versions on Windows), you need to point your browser to the IP address of the virtual machine, which you can see with `docker-machine ip default`.
+* Also, if you're already using port 8888 locally, you should remap the Docker port elsewhere, e.g., with `-p 8890:8888`.  
 * Don't forget to remove your containers (`docker ps -a; docker rm ...`) once you're done.
 
 ## Building notes
 
-* [Calceph](http://www.imcce.fr/fr/presentation/equipes/ASD/inpop/calceph) 2.3.2 is installed from sources, into `\usr/local`.
+* [Calceph](http://www.imcce.fr/fr/presentation/equipes/ASD/inpop/calceph) 2.3.2 is installed from sources, into `/usr/local`.
 * `line_profiler` is installed with `pip`, to work around an Anaconda problem.
 * `scikit-sparse` 0.31 is installed from the `menpo` repository, after `apt-get`-installing `liblapack3`.
