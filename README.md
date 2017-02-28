@@ -10,8 +10,11 @@ Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stoc
 
 * [Install Docker](https://docs.docker.com/engine/installation)
 * Start Docker.
-* `docker pull micvallis/nanograv-stochastic:v2`
-* `docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2 run_jupyter.sh`
+* Pull the repository and run the jupyter notebook
+```bash
+docker pull micvallis/nanograv-stochastic:2.1
+docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.1 run_jupyter.sh
+```
 * Then you can open a web browser at the address that appears on the screen, and gain access to a Jupyter notebook that can run the `libstempo`, `PAL2`, and `NX01` demos.
 * If you're using the older Docker Toolbox for Mac (and perhaps some versions on Windows), you need to point your browser to the IP address of the virtual machine, which you can see with `docker-machine ip default`.
 * Also, if you're already using port 8888 locally, you should remap the Docker port elsewhere, e.g., with `-p 8890:8888`.  
