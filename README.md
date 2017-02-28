@@ -12,7 +12,7 @@ Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stoc
 * Start Docker.
 * Pull the repository and run the jupyter notebook
 ```bash
-docker pull micvallis/nanograv-stochastic:2.1
+docker pull micvallis/nanograv-stochastic:v2.1
 docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.1 run_jupyter.sh
 ```
 * Then you can open a web browser at the address that appears on the screen, and gain access to a Jupyter notebook that can run the `libstempo`, `PAL2`, and `NX01` demos.
