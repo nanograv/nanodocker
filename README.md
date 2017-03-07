@@ -4,7 +4,7 @@ A repository of Dockerfiles for NANOGrav DWG Docker images.
 
 ## `nanograv-stochastic`
 
-Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stochastic:v2.1` at the [Docker Hub](https://hub.docker.com/r/micvallis/nanograv-stochastic/)) includes [tempo2](https://bitbucket.org/psrsoft/tempo2) and [libstempo](https://github.com/vallis/libstempo) with the latest ephemeris functionality, [PAL2](https://github.com/jellis18/PAL2), [NX01](https://github.com/stevertaylor/NX01), and attendant Python packages (installed through [Miniconda](http://conda.pydata.org/miniconda.html)), including [PTMCMCSampler](https://github.com/jellis18/PTMCMCSampler). The image was built on top of [gcc:4.9](https://hub.docker.com/_/gcc), and it weighs 3.22GB (roughly half from gcc and half from Anaconda packages). The image is meant to be used by the passwordless user `nanograv`.
+Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stochastic:v2.2` at the [Docker Hub](https://hub.docker.com/r/micvallis/nanograv-stochastic/)) includes [tempo2](https://bitbucket.org/psrsoft/tempo2) and [libstempo](https://github.com/vallis/libstempo) with the latest ephemeris functionality, [PAL2](https://github.com/jellis18/PAL2), [NX01](https://github.com/stevertaylor/NX01), and attendant Python packages (installed through [Miniconda](http://conda.pydata.org/miniconda.html)), including [PTMCMCSampler](https://github.com/jellis18/PTMCMCSampler). The image was built on top of [gcc:4.9](https://hub.docker.com/_/gcc), and it weighs 3.22GB (roughly half from gcc and half from Anaconda packages). The image is meant to be used by the passwordless user `nanograv`.
 
 ## Quickstart for local use
 
@@ -12,8 +12,8 @@ Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stoc
 * Start Docker.
 * Pull the repository and run the jupyter notebook
 ```bash
-docker pull micvallis/nanograv-stochastic:v2.1
-docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.1 run_jupyter.sh
+docker pull micvallis/nanograv-stochastic:v2.2
+docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.2 run_jupyter.sh
 ```
 * Then you can open a web browser at the address that appears on the screen, and gain access to a Jupyter notebook that can run the `libstempo`, `PAL2`, and `NX01` demos.
 * If you're using the older Docker Toolbox for Mac (and perhaps some versions on Windows), you need to point your browser to the IP address of the virtual machine, which you can see with `docker-machine ip default`.

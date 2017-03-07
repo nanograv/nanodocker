@@ -50,6 +50,13 @@ COPY run_jupyter.sh /opt/miniconda2/bin
 # non-standard-Anaconda packages
 RUN pip install healpy acor line_profiler
 
+# install LAPACK
+RUN apt-get -y update && \
+    apt-get -y install liblapack3 && \
+    apt-get clean && \
+    conda install -y -c menpo scikit-sparse && \
+    conda clean -a
+
 # install PAL2 (do not remove it)
 RUN git clone https://github.com/jellis18/PAL2.git && \
     cd PAL2 && \
@@ -62,13 +69,6 @@ RUN git clone https://github.com/jellis18/PTMCMCSampler && \
     cd PTMCMCSampler && \
     python setup.py install && \
     cd .. && rm -rf PTMCMCSampler
-
-# install LAPACK
-RUN apt-get -y update && \
-    apt-get -y install liblapack3 && \
-    apt-get clean && \
-    conda install -y -c menpo scikit-sparse && \
-    conda clean -a
 
 # install NX01 (rather, check it out and copy it to the nanograv user)
 RUN git clone https://github.com/stevertaylor/NX01.git && \
