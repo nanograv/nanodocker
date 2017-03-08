@@ -50,6 +50,12 @@ COPY run_jupyter.sh /opt/miniconda2/bin
 # non-standard-Anaconda packages
 RUN pip install healpy acor line_profiler
 
+# install PTMCMCSampler
+RUN git clone https://github.com/jellis18/PTMCMCSampler && \
+    cd PTMCMCSampler && \
+    python setup.py install && \
+    cd .. && rm -rf PTMCMCSampler
+
 # install LAPACK
 RUN apt-get -y update && \
     apt-get -y install liblapack3 && \
@@ -63,13 +69,11 @@ RUN git clone https://github.com/jellis18/PAL2.git && \
     python setup.py install && \
     cp -rp demo /home/nanograv/PAL2-demo && chown -R nanograv /home/nanograv/PAL2-demo && \
     cd .. && rm -rf PAL2
-
-# install PTMCMCSampler
-RUN git clone https://github.com/jellis18/PTMCMCSampler && \
-    cd PTMCMCSampler && \
-    python setup.py install && \
-    cd .. && rm -rf PTMCMCSampler
-
+    
 # install NX01 (rather, check it out and copy it to the nanograv user)
 RUN git clone https://github.com/stevertaylor/NX01.git && \
     cp -rp NX01 /home/nanograv/NX01 && chown -R nanograv /home/nanograv/NX01 
+
+# matplotlib rc (default backend: Agg)
+RUN mkdir -p /home/nanograv/.config/matplotlib && chown -R nanograv /home/nanograv/.config 
+COPY matplotlibrc /home/nanograv/.config/matplotlib
