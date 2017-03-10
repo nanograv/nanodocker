@@ -10,7 +10,7 @@ Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stoc
 
 * [Install Docker](https://docs.docker.com/engine/installation)
 * Start Docker.
-* Pull the repository and run the jupyter notebook
+* Pull the repository and run jupyter notebook in a new container
 ```bash
 docker pull micvallis/nanograv-stochastic:v2.4
 docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.4 run_jupyter.sh
@@ -20,6 +20,35 @@ docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.4 run
 * Also, if you're already using port 8888 locally, you should remap the Docker port elsewhere, e.g., with `-p 8890:8888`.  
 * Don't forget to remove your containers (`docker ps -a; docker rm ...`) once you're done.
 
+### Tips and Tricks
+ * **run a terminal in an already running container.**
+ ```bash
+ docker exec -it [container_ID] bash
+ ```
+ You can replace `bash` with any terminal command.
+ 
+ * **mount a local directory in a container.**
+ When you run a new container all files you create will be available to **that** container.
+ If you start a second container or update a container all of your changes will be inaccessible.
+ ```bash
+ docker run [the usual options] -v /my/local/dir:/home/nanograv/local_data/ run_jupyter.sh
+ ```
+ Your local directory will appear in the home directory of the container as `local_data/`.
+ 
+ * **reattach to a stopped container.**  Use `docker ps -a` to see all containers.
+ ```bash
+ docker start [container_ID]  # start a stopped container
+ docker attach [container_ID] # attach this terminal to a container
+ ```
+ You can now navigate you browser to the same URL to reattch to the Jupyter notebook server.
+ 
+ * **copy files to or from the local file system.**
+ From a local terminal you can use `docker cp [source] [dest]` with the container ID.
+ `docker cp` is recursive by default so it can copy full directories (unlike standard `cp`).
+ ```bash
+ docker cp /path/to/local/file [container_ID]:/path/in/container
+ ```
+ 
 ## Building notes
 
 * [Calceph](http://www.imcce.fr/fr/presentation/equipes/ASD/inpop/calceph) 2.4.2 is installed from sources, into `/usr/local`.
