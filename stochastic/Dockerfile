@@ -63,13 +63,17 @@ RUN apt-get -y update && \
     conda install -y -c menpo scikit-sparse && \
     conda clean -a
 
+# install a few other basic tools
+RUN apt-get -y install less gawk vim && \
+    apt-get clean
+
 # install PAL2 (do not remove it)
 RUN git clone https://github.com/jellis18/PAL2.git && \
     cd PAL2 && \
     python setup.py install && \
     cp -rp demo /home/nanograv/PAL2-demo && chown -R nanograv /home/nanograv/PAL2-demo && \
     cd .. && rm -rf PAL2
-    
+
 # install NX01 (rather, check it out and copy it to the nanograv user)
 RUN git clone https://github.com/stevertaylor/NX01.git && \
     cp -rp NX01 /home/nanograv/NX01 && chown -R nanograv /home/nanograv/NX01 
