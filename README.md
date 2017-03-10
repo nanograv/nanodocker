@@ -40,7 +40,7 @@ docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.4 run
  docker start [container_ID]  # start a stopped container
  docker attach [container_ID] # attach this terminal to a container
  ```
- You can now navigate you browser to the same URL to reattch to the Jupyter notebook server.
+ You can now navigate your browser to the same URL to reattch to the Jupyter notebook server.
  
  * **copy files to or from the local file system.**
  From a local terminal you can use `docker cp [source] [dest]` with the container ID.
