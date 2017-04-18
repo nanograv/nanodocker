@@ -6,6 +6,10 @@ A repository of Dockerfiles for NANOGrav DWG Docker images.
 
 Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stochastic:v2.4` at the [Docker Hub](https://hub.docker.com/r/micvallis/nanograv-stochastic/)) includes [tempo2](https://bitbucket.org/psrsoft/tempo2) and [libstempo](https://github.com/vallis/libstempo) with the latest ephemeris functionality, [PAL2](https://github.com/jellis18/PAL2), [NX01](https://github.com/stevertaylor/NX01), and attendant Python packages (installed through [Miniconda](http://conda.pydata.org/miniconda.html)), including [PTMCMCSampler](https://github.com/jellis18/PTMCMCSampler). The image was built on top of [gcc:4.9](https://hub.docker.com/_/gcc), and it weighs 3.22GB (roughly half from gcc and half from Anaconda packages). The image is meant to be used by the passwordless user `nanograv`.
 
+## `nanograv-stochastic-user`
+
+Same as `nanograv-stochastic`, but all Python packages are installed under the user `nanograv`, and can therefore be updated. The latest version is `micvallis/nanograv-stochastic:v1.1`.
+
 ## Quickstart for local use
 
 * [Install Docker](https://docs.docker.com/engine/installation)
