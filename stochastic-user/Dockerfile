@@ -54,8 +54,10 @@ RUN conda install -y numpy cython scipy && \
     conda clean -a
 
 # install libstempo (before other Anaconda packages, esp. matplotlib, so there's no libgcc confusion)
+# get 2.3.2 specifically (git sha 6539c68); run git pull to update to latest
 RUN git clone https://github.com/vallis/libstempo.git && \
     cd libstempo && \
+    git reset --hard 6539c68 && \
     python setup.py install --with-tempo2=/home/nanograv && \
     cd /home/nanograv && ln -s source/libstempo/demo libstempo-demo
 
