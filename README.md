@@ -8,7 +8,7 @@ Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stoc
 
 ## `nanograv-stochastic-user`
 
-Same as `nanograv-stochastic`, but all Python packages are installed under the user `nanograv`, and can therefore be updated. The latest version is `micvallis/nanograv-stochastic-user:v1.2`.
+Same as `nanograv-stochastic`, but all Python packages are installed under the user `nanograv`, and can therefore be updated. The latest version is `micvallis/nanograv-stochastic-user:v1.3`.
 
 ## Quickstart for local use
 
@@ -60,4 +60,4 @@ docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.4 run
 * `scikit-sparse` 0.31 is installed from the `menpo` repository, after `apt-get`-installing `liblapack3`.
 * `less`, `gawk`, and `vim` are installed with `apt-get`.
 * In `nanograv-stochastic-user`, we are now pulling a specific version of `libstempo`, identified by SHA. We can use the same mechanism to update the image to `PAL2` and `NX01` releases.
-
+* In `nanograv-stochastic-user`, we are now downloading extra ephemeris files.
