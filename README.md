@@ -8,7 +8,7 @@ Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stoc
 
 ## `nanograv-stochastic-user`
 
-Same as `nanograv-stochastic`, but all Python packages are installed under the user `nanograv`, and can therefore be updated. The latest version is `micvallis/nanograv-stochastic-user:v1.3`.
+Same as `nanograv-stochastic`, but all Python packages are installed under the user `nanograv`, and can therefore be updated. The latest version is `micvallis/nanograv-stochastic-user:v1.4`.
 
 ## Quickstart for local use
 
