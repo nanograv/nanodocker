@@ -95,11 +95,14 @@ RUN conda install -y -c menpo scikit-sparse && \
 # install PAL2 (do not remove it)
 RUN git clone https://github.com/jellis18/PAL2.git && \
     cd PAL2 && \
+    git reset --hard 87d572af && \
     python setup.py install && \
     cd /home/nanograv && ln -s source/PAL2/demo PAL2-demo
 
 # install NX01 (rather, check it out and create a symbolic link)
 RUN git clone https://github.com/stevertaylor/NX01.git && \
+    cd NX01 && \
+    git reset --hard d22e6f08 && \
     cd /home/nanograv && ln -s source/NX01 NX01
 
 # matplotlib rc (default backend: Agg)
