@@ -59,7 +59,7 @@ RUN conda install -y numpy cython scipy && \
 # get 2.3.3 specifically (git sha 5669e69); run git pull to update to latest
 RUN git clone https://github.com/vallis/libstempo.git && \
     cd libstempo && \
-    git reset --hard 5669e69 && \
+    git reset --hard 5aec48b && \
     python setup.py install --with-tempo2=/home/nanograv && \
     cd /home/nanograv && ln -s source/libstempo/demo libstempo-demo
 
