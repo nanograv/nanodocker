@@ -2,13 +2,13 @@
 
 A repository of Dockerfiles for NANOGrav DWG Docker images.
 
-## `nanograv-stochastic`
-
-Currently the `nanograv-stochastic` image (available as `micvallis/nanograv-stochastic:v2.4` at the [Docker Hub](https://hub.docker.com/r/micvallis/nanograv-stochastic/)) includes [tempo2](https://bitbucket.org/psrsoft/tempo2) and [libstempo](https://github.com/vallis/libstempo) with the latest ephemeris functionality, [PAL2](https://github.com/jellis18/PAL2), [NX01](https://github.com/stevertaylor/NX01), and attendant Python packages (installed through [Miniconda](http://conda.pydata.org/miniconda.html)), including [PTMCMCSampler](https://github.com/jellis18/PTMCMCSampler). The image was built on top of [gcc:4.9](https://hub.docker.com/_/gcc), and it weighs 3.22GB (roughly half from gcc and half from Anaconda packages). The image is meant to be used by the passwordless user `nanograv`.
-
 ## `nanograv-stochastic-user`
 
-Same as `nanograv-stochastic`, but all Python packages are installed under the user `nanograv`, and can therefore be updated. The latest version is `micvallis/nanograv-stochastic-user:v1.5`.
+Currently the `nanograv-stochastic-user` image (available as `micvallis/nanograv-stochastic-user:v1.7` at the [Docker Hub](https://hub.docker.com/r/micvallis/nanograv-stochastic/)) includes [tempo2](https://bitbucket.org/psrsoft/tempo2) and [libstempo](https://github.com/vallis/libstempo) with the latest ephemeris functionality, [PAL2](https://github.com/jellis18/PAL2), [NX01](https://github.com/stevertaylor/NX01), [Piccard](https://github.com/vhaasteren/piccard), and attendant Python packages (installed through [Miniconda](http://conda.pydata.org/miniconda.html)), including [PTMCMCSampler](https://github.com/jellis18/PTMCMCSampler). The image was built on top of [gcc:4.9](https://hub.docker.com/_/gcc), and it weighs 4.5GB (roughly half from gcc and half from Anaconda packages). The image is meant to be used by the passwordless user `nanograv`.
+
+## Other images: `nanograv-stochastic`
+
+Same as `nanograv-stochastic-user`, but most everything is installed by the root user. Potentially useful on clusters. The latest version, lagging slightly behind `nanograv-stochastic-user`, is `micvallis/nanograv-stochastic:v2.4`.
 
 ## Quickstart for local use
 
@@ -16,10 +16,10 @@ Same as `nanograv-stochastic`, but all Python packages are installed under the u
 * Start Docker.
 * Pull the repository and run jupyter notebook in a new container
 ```bash
-docker pull micvallis/nanograv-stochastic:v2.4
-docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.4 run_jupyter.sh
+docker pull micvallis/nanograv-stochastic-user:v1.7
+docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic-user:v1.7 run_jupyter.sh
 ```
-* Then you can open a web browser at the address that appears on the screen, and gain access to a Jupyter notebook that can run the `libstempo`, `PAL2`, and `NX01` demos.
+* Then you can open a web browser at the address that appears on the screen, and gain access to a Jupyter notebook that can run the `libstempo`, `PAL2`, `NX01`, and `Piccard` demos.
 * If you're using the older Docker Toolbox for Mac (and perhaps some versions on Windows), you need to point your browser to the IP address of the virtual machine, which you can see with `docker-machine ip default`.
 * Also, if you're already using port 8888 locally, you should remap the Docker port elsewhere, e.g., with `-p 8890:8888`.  
 * Don't forget to remove your containers (`docker ps -a; docker rm ...`) once you're done.
@@ -41,10 +41,10 @@ docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.4 run
  
  * **reattach to a stopped container.**  Use `docker ps -a` to see all containers.
  ```bash
- docker start [container_ID]  # start a stopped container
- docker attach [container_ID] # attach this terminal to a container
+ docker start -a [container_ID]  # start a stopped container (and see stdout)
+ docker attach [container_ID]    # attach this terminal to a container
  ```
- You can now navigate your browser to the same URL to reattch to the Jupyter notebook server.
+ You can now navigate your browser to the displayed URL to reattach to the Jupyter notebook server.
  
  * **copy files to or from the local file system.**
  From a local terminal you can use `docker cp [source] [dest]` with the container ID.
@@ -61,5 +61,4 @@ docker run -i -t -p 8888:8888 -u nanograv micvallis/nanograv-stochastic:v2.4 run
 * `less`, `gawk`, and `vim` are installed with `apt-get`.
 * In `nanograv-stochastic-user`, we are now pulling a specific version of `libstempo`, `PAL2`, and `NX01`, identified by SHA.
 * In `nanograv-stochastic-user`, we are now downloading extra ephemeris files.
-* `nanograv-stochastic-user` now supports [enterprise](https://github.com/nanograv/enterprise) development.
-
+* With `nanograv-stochastic-user`, we now support prerequisites for [Enterprise](https://github.com/nanograv/enterprise) development, but you will have to check out `Enterprise`.

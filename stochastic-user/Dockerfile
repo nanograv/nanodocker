@@ -64,7 +64,7 @@ RUN git clone https://github.com/vallis/libstempo.git && \
     cd /home/nanograv && ln -s source/libstempo/demo libstempo-demo
 
 # install more Python packages
-RUN conda install -y matplotlib ipython jupyter notebook h5py mpi4py numexpr statsmodels astropy ephem && \
+RUN conda install -y matplotlib ipython jupyter notebook h5py mpi4py numexpr statsmodels astropy ephem runipy && \
     conda clean -a
 
 ENV MKL_NUM_THREADS=4
@@ -77,7 +77,7 @@ RUN pip install jupyter_contrib_nbextensions && \
 COPY run_jupyter.sh /home/nanograv/bin
 
 # non-standard-Anaconda packages
-RUN pip install healpy acor line_profiler jplephem
+RUN pip install healpy acor line_profiler jplephem corner numdifftools
 
 # enterprise development packages
 COPY requirements_dev.txt /home/nanograv/source/requirements_dev.txt
@@ -104,6 +104,12 @@ RUN git clone https://github.com/stevertaylor/NX01.git && \
     cd NX01 && \
     git reset --hard d22e6f08 && \
     cd /home/nanograv && ln -s source/NX01 NX01
+
+# install Piccard
+RUN git clone https://github.com/vhaasteren/piccard.git && \
+    cd piccard && \
+    python setup.py install && \
+    cd /home/nanograv && ln -s source/piccard piccard
 
 # matplotlib rc (default backend: Agg)
 RUN mkdir -p /home/nanograv/.config/matplotlib 
