@@ -111,6 +111,11 @@ RUN git clone https://github.com/vhaasteren/piccard.git && \
     python setup.py install && \
     cd /home/nanograv && ln -s source/piccard piccard
 
+# install enterprise
+RUN git clone https://github.com/nanograv/enterprise.git && \
+    cd enterprise && \
+    python setup.py install
+
 # matplotlib rc (default backend: Agg)
 RUN mkdir -p /home/nanograv/.config/matplotlib 
 COPY matplotlibrc /home/nanograv/.config/matplotlib
