@@ -1,6 +1,10 @@
-Running Enterprise with Singularity
+# Running Enterprise with Singularity
 
-The broad idea is that a Singularity “container" includes Python 3.6 with all the libraries (`numpy/scipy`, `tempo2`, `libstempo`, etc.) that are needed to run enterprise. Thus, in a cluster environment, you will run Jupyter notebooks and batch jobs *inside* the Singularity container. However, your data files, output files, and even the Enterprise distribution will reside in your home directory on the cluster, and will be visible to Singularity. (I could have included the Enterprise distribution in the container, but since we’re still evolving it, it’s best to keep it under your control so you can `git pull` as needed.)
+* Singularity home: https://www.sylabs.io
+* Singularity documentation: https://www.sylabs.io/guides/2.6/user-guide/
+* SingularityHub `nanograv/nanodocker` collection: https://www.singularity-hub.org/collections/1726 
+
+The broad idea is that a Singularity "container" includes Python 3.6 with all the libraries (`numpy/scipy`, `tempo2`, `libstempo`, etc.) that are needed to run enterprise. Thus, in a cluster environment, you will run Jupyter notebooks and batch jobs *inside* the Singularity container. However, your data files, output files, and even the Enterprise distribution will reside in your home directory on the cluster, and will be visible to Singularity. (I could have included the Enterprise distribution in the container, but since it's still evolving, it’s best to keep it under your control so you can `git pull` as needed.)
 
 To get set up on a cluster with singularity, do the following
 
