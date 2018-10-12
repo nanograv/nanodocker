@@ -65,7 +65,9 @@ From: gcc:4.9
 
     git clone https://github.com/dfm/acor && \
     cd acor && \
-    python setup.py install --user
+    python setup.py install && \
+    cd .. && \
+    rm -rf acor
 
     git clone https://github.com/jellis18/PTMCMCSampler && \
     cd PTMCMCSampler && \
