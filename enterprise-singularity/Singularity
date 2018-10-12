@@ -55,13 +55,17 @@ From: gcc:4.9
     rm Miniconda3-latest-Linux-x86_64.sh && \
     export PATH="/opt/miniconda3/bin:${PATH}" && \
     conda install -y numpy cython scipy matplotlib ipython jupyter notebook h5py mpi4py numexpr statsmodels astropy ephem && \
-    pip install healpy acor corner line_profiler jplephem libstempo && \
+    pip install healpy corner line_profiler jplephem libstempo && \
     conda install -y -c menpo suitesparse && \
     export CPATH=/opt/miniconda3/include/suitesparse && \
     pip install scikit-sparse && \
     pip install jupyter_contrib_nbextensions && \
     jupyter contrib nbextension install --user && \
     conda clean -a -y
+
+    git clone https://github.com/dfm/acor && \
+    cd acor && \
+    python setup.py install --user
 
     git clone https://github.com/jellis18/PTMCMCSampler && \
     cd PTMCMCSampler && \
